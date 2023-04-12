@@ -1,3 +1,4 @@
+{% with request.resolver_match.view_name as view_name %}
 <h5>{{ post.title }}</h5>
 <article>
     <ul>
@@ -14,8 +15,13 @@
       </li>
     </ul>
       <p>
-        {{ post.text|truncatewords:10 }}
-      </p>
+        {% if view_name == 'blog:index' %}
+       <p> {{ post.text|truncatewords:10 }} </p>
+        {% endif %}
+        {% if view_name == 'blog:post_detail' %}
+        <p> {{ post.text }} </p>
+         {% endif %}
       <a href="{% url 'blog:post_detail' post.id %}" >Читать полный текст</a>
     </article>
+    {% endwith %} 
   
