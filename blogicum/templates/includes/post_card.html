@@ -8,7 +8,9 @@
        Дата: {{ post.date }}
       </li>
       <li>
-       Категория:{% include "includes/category_link.html" %}
+        <a>
+            Категория: <a href={% url 'blog:category_posts' post.category %}>{{ post.category }}</a>
+        </a>
       </li>
     </ul>
       <p>
